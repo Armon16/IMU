@@ -31,6 +31,8 @@ from Adafruit_BNO055 import BNO055
 global imuData
 imuData = {}
 
+subprocess.call(["python", "calImuOnly.py"])
+time.sleep(3)
 
 magneticDeclination = 11.88
 
@@ -57,6 +59,7 @@ fileIn = open('calibrationData.txt','r')
 data = fileIn.read().splitlines()
 for i in range(len(data)):
     data[i] = int(data[i])
+print data
 bno.set_calibration(data)
 fileIn.close()
 
